@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <servers>
+        <server>
+            <id>gitlab-maven</id>
+            <configuration>
+                <httpHeaders>
+                    <property>
+                        <name>Private-Token</name>
+                        <value>${env.GITLAB_ACCESS_TOKEN}</value>
+                    </property>
+                </httpHeaders>
+            </configuration>
+        </server>
+        <server>
+            <id>jfrog-maven</id>
+            <username>${env.JFROG_USERNAME}</username>
+            <password>${env.JFROG_ACCESS_TOKEN}</password>
+        </server>
+    </servers>
+    <profiles>
+        <profile>
+            <id>gitlab-package-registry</id>
+            <repositories>
+                <repository>
+                    <id>gitlab-maven</id>
+                    <name>Gitlab richemont package registry</name>
+                    <url>https://gitlab.richemont.com/api/v4/groups/555/-/packages/maven</url>
+                </repository>
+            </repositories>
+        </profile>
+        <profile>
+            <id>jfrog-artifactory</id>
+            <repositories>
+                <repository>
+                    <id>jfrog-maven</id>
+                    <name>Jfrog richemont package registry</name>
+                    <url>https://jfrog-platform.eu.aws.rccad.net:443/artifactory/cardig-maven-virtual</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>jfrog-maven</id>
+                    <name>Jfrog richemont package registry</name>
+                    <url>https://jfrog-platform.eu.aws.rccad.net:443/artifactory/cardig-maven-virtual</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>gitlab-package-registry</activeProfile>
+        <activeProfile>jfrog-artifactory</activeProfile>
+    </activeProfiles>
+</settings>
