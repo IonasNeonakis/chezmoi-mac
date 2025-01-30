@@ -1,11 +1,11 @@
 @awesome.me:registry=https://npm.fontawesome.com/
 @fortawesome:registry=https://npm.fontawesome.com/
 @scm_project:registry=https://gitlab.richemont.com/api/v4/packages/npm/
-//gitlab.richemont.com/api/v4/packages/npm/:_authToken=
-//gitlab.richemont.com/api/v4/projects/:_authToken=
-//gitlab.richemont.com/api/v4/projects/1931/packages/npm/:_authToken=
-//gitlab.richemont.com/api/v4/projects/3259/packages/npm/:_authToken=
-//npm.fontawesome.com/:_authToken=
+//gitlab.richemont.com/api/v4/packages/npm/:_authToken=${GITLAB_ACCESS_TOKEN}
+//gitlab.richemont.com/api/v4/projects/:_authToken=${GITLAB_ACCESS_TOKEN}
+//gitlab.richemont.com/api/v4/projects/1931/packages/npm/:_authToken=${GITLAB_ACCESS_TOKEN}
+//gitlab.richemont.com/api/v4/projects/3259/packages/npm/:_authToken=${GITLAB_ACCESS_TOKEN}
+//npm.fontawesome.com/:_authToken=${FONT_AWESOME_ACCESS_TOKEN}
 editor=nano
 registry=https://registry.npmjs.org/
 strict-ssl=false
